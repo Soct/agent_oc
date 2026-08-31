@@ -1,0 +1,53 @@
+[
+  {
+    "title": "Partie italienne",
+    "text": "Après 1.e4 e5 2.Cf3 Cc6 3.Fc4, les Blancs développent rapidement le fou vers la case faible f7. Les plans classiques sont le petit roque, d3 puis c3 et d4. Il faut éviter une attaque prématurée sans terminer le développement.",
+    "source_url": "https://ficgs.com/wikichess_108.html"
+  },
+  {
+    "title": "Partie espagnole",
+    "text": "La partie espagnole débute par 1.e4 e5 2.Cf3 Cc6 3.Fb5. Le fou exerce une pression indirecte sur e5 en visant le défenseur c6. Les positions sont souvent stratégiques avec une lutte pour le centre et une préparation de d4.",
+    "source_url": "https://ficgs.com/wikichess_107.html"
+  },
+  {
+    "title": "Défense sicilienne",
+    "text": "La Sicilienne commence par 1.e4 c5. Les Noirs combattent la case d4 avec un pion latéral et créent une position asymétrique. Dans les variantes ouvertes, les Blancs jouent Cf3 puis d4 et les deux camps attaquent souvent sur des ailes opposées.",
+    "source_url": "https://ficgs.com/wikichess_112.html"
+  },
+  {
+    "title": "Défense française",
+    "text": "Après 1.e4 e6 2.d4 d5, les Noirs attaquent le centre blanc. La chaîne de pions oriente les plans : les Blancs gagnent de l'espace à l'aile roi, tandis que les Noirs cherchent les ruptures c5 et f6.",
+    "source_url": "https://ficgs.com/wikichess_113.html"
+  },
+  {
+    "title": "Défense Caro-Kann",
+    "text": "La Caro-Kann débute par 1.e4 c6 avec l'idée de jouer d5 au coup suivant. Elle donne souvent aux Noirs une structure solide et permet au fou de cases blanches de sortir avant e6. Le développement peut être plus lent mais comporte peu de faiblesses.",
+    "source_url": "https://ficgs.com/wikichess_114.html"
+  },
+  {
+    "title": "Gambit dame",
+    "text": "Le gambit dame apparaît après 1.d4 d5 2.c4. Le pion c cherche à détourner le pion d5 afin de construire un fort centre. Ce n'est généralement pas un vrai sacrifice, car les Noirs ont du mal à conserver le pion accepté sans concessions.",
+    "source_url": "https://ficgs.com/wikichess_123.html"
+  },
+  {
+    "title": "Défense indienne du roi",
+    "text": "L'Indienne du roi se construit souvent par Cf6, g6, Fg7 et d6 contre le centre blanc. Les Noirs laissent de l'espace puis cherchent e5 ou c5. Les attaques à l'aile roi sont fréquentes lorsque le centre est fermé.",
+    "source_url": "https://ficgs.com/wikichess_133.html"
+  },
+  {
+    "title": "Système de Londres",
+    "text": "Le système de Londres place typiquement les pions en d4, e3 et c3, le fou en f4 et le cavalier en f3. Son développement robuste réduit la mémorisation, mais le joueur doit encore réagir au plan adverse plutôt que jouer automatiquement.",
+    "source_url": "https://ficgs.com/wikichess_125.html"
+  },
+  {
+    "title": "Défense scandinave",
+    "text": "La Scandinave répond à 1.e4 par d5. Après exd5, la dame noire reprend souvent en d5 puis recule avec un développement un peu retardé. En échange, les Noirs obtiennent une structure claire et attaquent immédiatement le centre.",
+    "source_url": "https://ficgs.com/wikichess_116.html"
+  },
+  {
+    "title": "Défense Pirc",
+    "text": "La Pirc laisse les Blancs installer un centre par e4 et d4, puis le conteste avec Cf6, g6, Fg7 et des ruptures comme c5. Les Noirs doivent surveiller le manque d'espace et choisir le bon moment pour contre-attaquer.",
+    "source_url": "https://ficgs.com/wikichess_118.html"
+  }
+]
+
