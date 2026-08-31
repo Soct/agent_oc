@@ -1,53 +1,132 @@
 [
   {
-    "title": "Partie italienne",
-    "text": "Après 1.e4 e5 2.Cf3 Cc6 3.Fc4, les Blancs développent rapidement le fou vers la case faible f7. Les plans classiques sont le petit roque, d3 puis c3 et d4. Il faut éviter une attaque prématurée sans terminer le développement.",
-    "source_url": "https://ficgs.com/wikichess_108.html"
+    "title": "B00 King's pawn Opening",
+    "text": "King's Pawn Game refers to any chess opening where White opens with 1.e4, the most popular of the twenty possible opening moves. Since nearly all of these openings have names of their own, the term \"King's Pawn Game\", unlike Queen's Pawn Game is rarely used to describe the opening of the game. King's Pawn Games are further classified by whether Black responds with 1...e5 or not. Openings beginning with 1.e4 e5 are called Double King's Pawn Games (or Openings), Symmetrical King's Pawn Games (or Openings), or Open Gamesthese terms are equivalent. Openings where Black responds to 1.e4 with a move other than 1...e5 are called Asymmetrical King's Pawn Games (or Openings) or Semi-open Games. According to Chessbase, white chances are about 57%",
+    "source_url": "https://ficgs.com/wikichess_1.html"
   },
   {
-    "title": "Partie espagnole",
-    "text": "La partie espagnole débute par 1.e4 e5 2.Cf3 Cc6 3.Fb5. Le fou exerce une pression indirecte sur e5 en visant le défenseur c6. Les positions sont souvent stratégiques avec une lutte pour le centre et une préparation de d4.",
-    "source_url": "https://ficgs.com/wikichess_107.html"
+    "title": "A40 Queen's pawn",
+    "text": "Queen's Pawn Game refer to any chess opening which starts with 1.d4, the second most popular opening move, but is now usually used to describe openings where White opens with 1.d4 but does not follow through with an early pawn advance to c4. Some of these openings have individual names as well. In the 1800s and early 1900s, 1.e4 was by far the most common opening move by White, while the different openings starting with 1.d4 were considered somewhat unusual and therefore classed together as \"Queen's Pawn Game\". As the merits of 1.d4 started to be explored it was the Queen's Gambit which was played most often; more popular than all other 1.d4 openings combined. The term \"Queen's Pawn Game\" was then narrowed down to any opening with 1.d4 which was not a Queen's Gambit. Eventually, through the efforts of the hypermodernists, the various Indian Defences, such as the King's Indian, Nimzo-Indian and Queen's Indian, became more popular, and as these openings were named, the term \"Queen's Pawn Game\" narrowed further. According to Chessbase, white chances are about 58%",
+    "source_url": "https://ficgs.com/wikichess_2.html"
   },
   {
-    "title": "Défense sicilienne",
-    "text": "La Sicilienne commence par 1.e4 c5. Les Noirs combattent la case d4 avec un pion latéral et créent une position asymétrique. Dans les variantes ouvertes, les Blancs jouent Cf3 puis d4 et les deux camps attaquent souvent sur des ailes opposées.",
-    "source_url": "https://ficgs.com/wikichess_112.html"
+    "title": "B20 Sicilian defense",
+    "text": "The Sicilian Defence is a chess opening which begins with 1.e4 c5 This is the most popular response to 1.e4 at the master level. Black immediately fights for the centre, but by attacking from the c-file (instead of mirroring White's move) he creates an asymmetrical position that leads to complicated situations. Typically, White has the initiative on the kingside while Black obtains counterplay on the queenside, particularly on the c-file after the exchange of Black's c-pawn for White's d-pawn. According to Chessbase, black chances are about 43%",
+    "source_url": "https://ficgs.com/wikichess_3.html"
   },
   {
-    "title": "Défense française",
-    "text": "Après 1.e4 e6 2.d4 d5, les Noirs attaquent le centre blanc. La chaîne de pions oriente les plans : les Blancs gagnent de l'espace à l'aile roi, tandis que les Noirs cherchent les ruptures c5 et f6.",
-    "source_url": "https://ficgs.com/wikichess_113.html"
+    "title": "A04 Reti Opening",
+    "text": "The Réti Opening (also called the King's Knight Opening) is a chess opening characterized by the opening move 1.Nf3 It is named after Richard Réti, a Czechoslovakian chess player who used it to defeat the world champion José Raúl Capablanca in 1924. According to ChessBase, out of the twenty possible opening moves, 1.Nf3 ranks third in popularity. It develops the knight to a good square and prepares for a quick castling. White maintains flexibility by not committing to a particular central pawn structure, while waiting to see what Black will do. The slight drawback to the move is that it blocks the f-pawn. This is not a problem if White does not intend to move it in the near future, but it rules out the possibility of playing systems with f3 and Nge2, which is a fairly popular setup against the King's Indian. Usually 1.Nf3 will transpose into an opening with 1.d4, such as the King's Indian or the Queen's Gambit. If White follows up with an early c4 a transposition to the English Opening may be reached. Even the Sicilian Defense may be reached if the game opens 1.Nf3 c5 2.e4. According to Chessbase, white chances are about 57%",
+    "source_url": "https://ficgs.com/wikichess_4.html"
   },
   {
-    "title": "Défense Caro-Kann",
-    "text": "La Caro-Kann débute par 1.e4 c6 avec l'idée de jouer d5 au coup suivant. Elle donne souvent aux Noirs une structure solide et permet au fou de cases blanches de sortir avant e6. Le développement peut être plus lent mais comporte peu de faiblesses.",
-    "source_url": "https://ficgs.com/wikichess_114.html"
+    "title": "C20 King's pawn game",
+    "text": "The open game is a fight for center squares : d4 and d5 are already under control, and the probable next moves 2.Nf3 or 2.Nc3, then 2. ... Nc6 or 2. ... Nf6 will take control of e4 and e5 squares as well. Games are often more tactical than in Sicilian opening (1.e4 c5), and requires more calculation than deep strategy. Furthermore, black chances to win are lower than in Sicilian, so I avoid to play it against computers or at correspondence chess. According to Chessbase and correspondence chess statistics, black chances are about 43%",
+    "source_url": "https://ficgs.com/wikichess_5.html"
   },
   {
-    "title": "Gambit dame",
-    "text": "Le gambit dame apparaît après 1.d4 d5 2.c4. Le pion c cherche à détourner le pion d5 afin de construire un fort centre. Ce n'est généralement pas un vrai sacrifice, car les Noirs ont du mal à conserver le pion accepté sans concessions.",
+    "title": "B27 Sicilian defense",
+    "text": "The main line, which leads to all popular variants such as Najdorf, Dragon, Sveshnikov, Scheveningen, Richter-Rauzer... The aim is to support d4 pawn advance as a third move. After 3. ... cxd4 white could play 4.Nxd4, giving a good square to the knight and avoiding to the queen to be exposed too early at the center of the board. According to Chessbase, 2.Nf3 is played at nearly 85% cases, giving 57% white chances.",
+    "source_url": "https://ficgs.com/wikichess_6.html"
+  },
+  {
+    "title": "B23 Sicilian — Closed",
+    "text": "Closed sicilian is a strategical opening that often leads to a slow white kingside attack. Black usually fights for counterplay on the queenside. Much less played than the main line 2.Nf3, this opening is a good alternative against sicilian experts. According to Chessbase, white chances are about 53%",
+    "source_url": "https://ficgs.com/wikichess_7.html"
+  },
+  {
+    "title": "C40 King's knight Opening",
+    "text": "King's knight opening is prefered at 90% cases. The knight simply attacks black's e5 pawn, that is not protected yet and controls d4 and e5 squares. By far the most played continuation is the King's Pawn Game 2...Nc6, and it is sub-divided into many familiar opening names like Ruy Lopez. Petrov's Defense, 2...Nf6, and the Philidor Defense, 2...d6, are also familiar opening names. Some less familiar continuations of the King's Knight Opening include: - Gunderam Defense 2...Qe7 - Greco Defense 2...Qf6 - Damiano Defense 2...f6 ? - Elephant Gambit 2...d5 - Latvian Gambit 2...f5 According to Chessbase, white chances are about 58%",
+    "source_url": "https://ficgs.com/wikichess_8.html"
+  },
+  {
+    "title": "C23 Bishop's Opening",
+    "text": "The Bishop's Opening is one of the oldest openings to be analyzed; it was studied by Lucena and Ruy Lopez. Later it was played by Philidor. Larsen was one of the few grandmasters to play it often, after first using it at the 1964 Interzonal Tournament. Although the Bishop's Opening is uncommon today, it has been used occasionally as a surprise by players such as Kasparov and Nunn. White attacks Black's f7-square and prevents Black from advancing his d-pawn to d5. By ignoring the beginner's rule, \"develop knights before bishops\", White leaves his f-pawn unblocked allowing the possibility of playing f4. This gives the Bishop's Opening an affinity to the King's Gambit and the Vienna Game, two openings that share this characteristic. In fact, the Bishop's Opening can transpose into the King's Gambit or the Vienna Game, and transpositions into Giuoco Piano and Two Knights Defense and other openings are also possible. In particular, White should remain alert for any chance to transpose into a favorable variation of the King's Gambit, but with careful play Black can avoid this danger. According to Chessbase, white chances are about 55%",
+    "source_url": "https://ficgs.com/wikichess_9.html"
+  },
+  {
+    "title": "C30 King's gambit",
+    "text": "King's gambit was the most popular opening in the 19th century. White offers a pawn to divert Black's e-pawn and build a full center with d2-d4. In order to hold the extra pawn, Black will have to spend time weakening his kingside with moves like g7-g5. It is now rarely seen at the master level, it being generally thought that Black can obtain a reasonable position either by giving back the gambitted pawn at a later time or holding on to it and consolidating defensively. Black must decide whether or not to accept the gambit. Since White cannot easily regain the pawn if Black accepts, the King's Gambit Accepted is the most common. According to Chessbase and correspondence chess statistics, white chances are about 54%",
+    "source_url": "https://ficgs.com/wikichess_10.html"
+  },
+  {
+    "title": "C00 French defense",
+    "text": "The French defence has a reputation for solidity and resilience, though it can result in a somewhat cramped game for Black in the early stages. Black often gains counterattacking possibilities on the queenside while White tends to concentrate on the kingside. The defence is named after a match played by correspondence between the cities of London and Paris in 1834 (although earlier examples of games with the opening do exist). In the early 20th century, Géza Maróczy was perhaps the first world-class player to make it his primary weapon against 1.e4. It is currently Black's third most popular reply to 1.e4, behind only 1...c5 and 1...e5. Players including Viktor Korchnoi, Mikhail Botvinnik, Wolfgang Uhlmann and Nigel Short have been particularly fond of it. More recently, the defence has featured strongly in the opening repertoires of Evgeny Bareev, Alexander Khalifman, Alexander Morozevich, and Teimour Radjabov. According to chessbase, black chances are about 43%",
+    "source_url": "https://ficgs.com/wikichess_21.html"
+  },
+  {
+    "title": "B10 Caro-Kann defense",
+    "text": "The Caro-Kann, like the Sicilian Defense and French Defense, is classified as a \"semi-open game\", but it is thought to be more passive and drawish than either of those openings. The opening is named after the German players Horatio Caro and Marcus Kann who analyzed the opening in 1886. According to Chessbase, black chances are about 43%",
+    "source_url": "https://ficgs.com/wikichess_22.html"
+  },
+  {
+    "title": "B02 Alekhine's defense",
+    "text": "Alekhine's Defence is named after Alexander Alekhine who first used it in two games in the 1921 Budapest tournament: one against Andre Steiner (which he won) and the other against Fritz Sämisch (which he drew). Another early exponent of the defence was Ernst Grünfeld. The opening is considered hypermodern because Black provokes White to attack Black's knight and occupy the centre with his pawns, hoping to prove that White's imposing mass of pawns in the centre (which often includes pawns on c4, d4, e5, and f4) is in fact weak. According to Chessbase, black chances are about 39%",
+    "source_url": "https://ficgs.com/wikichess_33.html"
+  },
+  {
+    "title": "B40 Sicilian defense",
+    "text": "This move is generally played to reach the Sicilian Taimanov or the Sicilian Kan(Paulsen). The advantage of e6 is to keep options open for the bishop of the dark squares. But it as somes disadvantages too: The sicilian with c3 or b3 is stronger here compared to 2..d6 or 2..Nc6 because e6 limits Black's options.",
+    "source_url": "https://ficgs.com/wikichess_109.html"
+  },
+  {
+    "title": "B32 Sicilian defense",
+    "text": "Not very common to try the Morra gambit here, but it's possible.",
     "source_url": "https://ficgs.com/wikichess_123.html"
   },
   {
-    "title": "Défense indienne du roi",
-    "text": "L'Indienne du roi se construit souvent par Cf6, g6, Fg7 et d6 contre le centre blanc. Les Noirs laissent de l'espace puis cherchent e5 ou c5. Les attaques à l'aile roi sont fréquentes lorsque le centre est fermé.",
-    "source_url": "https://ficgs.com/wikichess_133.html"
-  },
-  {
-    "title": "Système de Londres",
-    "text": "Le système de Londres place typiquement les pions en d4, e3 et c3, le fou en f4 et le cavalier en f3. Son développement robuste réduit la mémorisation, mais le joueur doit encore réagir au plan adverse plutôt que jouer automatiquement.",
+    "title": "B36 Sicilian — Accelerated Fianchetto, Maroczy bind",
+    "text": "This move prepare the Maroczy Bind. Maybe the best way to play for White here.",
     "source_url": "https://ficgs.com/wikichess_125.html"
   },
   {
-    "title": "Défense scandinave",
-    "text": "La Scandinave répond à 1.e4 par d5. Après exd5, la dame noire reprend souvent en d5 puis recule avec un développement un peu retardé. En échange, les Noirs obtiennent une structure claire et attaquent immédiatement le centre.",
-    "source_url": "https://ficgs.com/wikichess_116.html"
+    "title": "A15 English, 1...Nf6 (Anglo-Indian defense)",
+    "text": "If White plays 2.d4, this line transposes to indian defenses.",
+    "source_url": "https://ficgs.com/wikichess_134.html"
   },
   {
-    "title": "Défense Pirc",
-    "text": "La Pirc laisse les Blancs installer un centre par e4 et d4, puis le conteste avec Cf6, g6, Fg7 et des ruptures comme c5. Les Noirs doivent surveiller le manque d'espace et choisir le bon moment pour contre-attaquer.",
-    "source_url": "https://ficgs.com/wikichess_118.html"
+    "title": "B01 Scandinavian (centre counter) defense",
+    "text": "One of the oldest recorded openings, first recorded as being played between Francesco di Castellvi and Narciso Vinyoles in Valencia in 1475, and being mentioned by Lucena in 1497. It and the French Defense are the oldest asymmetric defenses to 1.e4. It is a playable, underrated defence that can lead to equality for black. White almost always takes the pawn. Other alternatives are 2. Nc3!?, leading to the Dunst opening, 2. d4!?, leading to the Blackmar-Deimer gambit, and 2. e5?!, leading to unique positions where black can easily equalise. After 2. exd5, there are two very different ways of playing the defence, 2...Nf6 and 2...Qxd5. 1.e4 d5 2.e5!? is also an option - going to French/CaroCann Lines - preventing the skandinawian...",
+    "source_url": "https://ficgs.com/wikichess_502.html"
+  },
+  {
+    "title": "B00 KP — Nimzovich defense",
+    "text": "The Nimzowitsch or Fischer Defense. This is a somewhat unusual chess opening and an example of hypermodern chess where Black invites White to occupy the centre of the board at an early stage with pawns. Black's intent is to block or otherwise restrain White's central pawns and, if allowed to do so by inaccurate play by White, eventually undermine the White pawn center by well-timed pawn advances of his own or by attacking the White pieces defending the centre.",
+    "source_url": "https://ficgs.com/wikichess_789.html"
+  },
+  {
+    "title": "B00 Fred",
+    "text": "This is Inving gambit. this gambit is the most dengerous weapon to use for black, as it can turn on the face because of Qh5+ the inving Gambit accepted have only four variant possible, After Fxe5. 2... g6, 2... h5 2... Nf6 and 2.. Kf7 the gambit can also be refused with , Nc3, Nf3, d3, f3, g3... or white can play the Advence Inving Gambit Variant (AIGV). This gambit is not a bad move tough it's is -0.37 for Rybka. ( This opening has no name, i just name it like that for fun) it can also be an inversed From gambit.",
+    "source_url": "https://ficgs.com/wikichess_6414.html"
+  },
+  {
+    "title": "A50 Queen's pawn game",
+    "text": "The most common move, played by 3 players out of 4, even more at a master level. The idea behind is quite the same as in Queen's gambit, giving space to white and controlling center. The c-file could be opened for rooks early in some variants, and the knight Nb1 now could jump to his most designated square c3. According to Chessbase, white chances are about 58%",
+    "source_url": "https://ficgs.com/wikichess_35.html"
+  },
+  {
+    "title": "E00 Queen's pawn game",
+    "text": "This move is played in about half games, leading to the famous Nimzo-Indian and Bogo-Indian defenses. It allows the black-squares bishop to enter in action quickly (castling usually follows) and to control the d5 center square. According to Chessbase, black chances are about 43%",
+    "source_url": "https://ficgs.com/wikichess_36.html"
+  },
+  {
+    "title": "E20 Nimzo-Indian defense",
+    "text": "The Nimzo-Indian Defence is a hypermodern opening, developed by Grandmaster Aaron Nimzowitsch who introduced it to master-level chess in the early 20th century. Unlike most Indian openings the Nimzo-Indian does not involve an immediate fianchetto, although Black often follows up with ...b6 and ...Bb7. By pinning White's knight Black prevents the threatened 4.e4 and seeks to inflict doubled pawns on White. White will attempt to create a pawn centre and develop his pieces to prepare for an assault on the Black position. According to Chessbase, black chances are about 43%",
+    "source_url": "https://ficgs.com/wikichess_38.html"
+  },
+  {
+    "title": "E40 Nimzo-Indian — 4.e3",
+    "text": "When learning chess, I often heard that e3 was the best and more logical move. These considerations probably points out more philosophy than chess, but this move has been played in about half games so far. According to Chessbase, white chances are about 57%",
+    "source_url": "https://ficgs.com/wikichess_39.html"
+  },
+  {
+    "title": "E10 Queen's pawn game",
+    "text": "This move has been played in more than half games recorded in Chessbase. I consider it less strong than Nc3 but GMs clearly prefer this move, probably offering good chances in a quieter game, avoiding the Nimzo-Indian defense. According to Chessbase, white chances are about 57%",
+    "source_url": "https://ficgs.com/wikichess_40.html"
+  },
+  {
+    "title": "E12 Queen's Indian defense",
+    "text": "Since White's third move 3.Nf3, a move commonly played to avoid the Nimzo-Indian Defence, does not threaten to occupy the centre with 4.e4, Black has the option of playing 3...b6, called Queen's Indian Defense. The play in the Queen's Indian is similar to that of the Nimzo-Indian. The opening is considered a hypermodern one, since Black does not strive to occupy the centre with his pawns immediately. Instead he intends to fianchetto his queen's bishop and put pressure on the e4-square in order to prevent White from occupying that square. With the White centre restrained Black intends to attack it. As in most other hypermodern openings, White will attempt to solidify his centre, prove that it is strong, not weak, and use his advantage in space to crush Black.",
+    "source_url": "https://ficgs.com/wikichess_41.html"
   }
 ]
-
