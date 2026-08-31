@@ -1,0 +1,30 @@
+# --- Environnements Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# --- Node.js ---
+node_modules/
+
+# --- Build ---
+dist/
+backend/.venv/
+
+# --- Docker ---
+*.log
+
+# --- IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Secrets ---
+.env
