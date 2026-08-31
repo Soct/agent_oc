@@ -1,0 +1,101 @@
+<header class="topbar">
+  <div class="brand-mark" aria-hidden="true">♞</div>
+  <div>
+    <p class="eyebrow">Fédération Française des Échecs · POC</p>
+    <h1>Coach d'ouvertures</h1>
+  </div>
+  <span class="status"><i></i> prêt à analyser</span>
+</header>
+
+<main>
+  <section class="intro">
+    <p class="eyebrow">Entraînement guidé</p>
+    <h2>Jouez quelques coups,<br><em>comprenez la position.</em></h2>
+    <p>Le coach consulte la théorie, explique les idées et appelle Stockfish si vous quittez les variantes connues.</p>
+  </section>
+
+  <div class="workspace">
+    <section class="board-card" aria-label="Échiquier interactif">
+      <div class="section-title">
+        <div><span>01</span><h3>Position</h3></div>
+        <button class="text-button" type="button" (click)="reset()">Réinitialiser</button>
+      </div>
+      <div class="board-wrap">
+        <ngx-chess-board
+          #board
+          [size]="520"
+          [showCoords]="true"
+          [showLegalMoves]="true"
+          [showLastMove]="true"
+          lightTileColor="#e8dcc5"
+          darkTileColor="#487067"
+          (moveChange)="onMove()">
+        </ngx-chess-board>
+      </div>
+      <label for="fen">Position FEN</label>
+      <div class="fen-row">
+        <input id="fen" [(ngModel)]="fen" (keyup.enter)="loadFen()" autocomplete="off">
+        <button type="button" class="secondary" (click)="loadFen()">Charger</button>
+      </div>
+      <button type="button" class="primary" (click)="analyze()" [disabled]="loading">
+        <span *ngIf="!loading">Analyser cette position <b>→</b></span>
+        <span *ngIf="loading" class="loading"><i></i> Consultation du coach…</span>
+      </button>
+      <p *ngIf="error" class="error" role="alert">{{ error }}</p>
+    </section>
+
+    <section class="coach-card" aria-live="polite">
+      <div class="section-title">
+        <div><span>02</span><h3>Conseils du coach</h3></div>
+        <small *ngIf="response">{{ response?.route === 'theory' ? 'THÉORIE' : 'MOTEUR' }}</small>
+      </div>
+
+      <div class="empty" *ngIf="!response && !loading">
+        <div>♙</div>
+        <h4>À vous de jouer</h4>
+        <p>Déplacez une pièce puis lancez l'analyse pour recevoir des recommandations.</p>
+      </div>
+
+      <div class="skeleton" *ngIf="loading">
+        <i></i><i></i><i></i><i></i>
+      </div>
+
+      <div class="results" *ngIf="response && !loading && response as result">
+        <p class="opening" *ngIf="result.opening">
+          {{ result.opening?.eco }} · {{ result.opening?.name }}
+        </p>
+        <h4>{{ result.summary }}</h4>
+
+        <div class="moves" *ngIf="result.suggested_moves.length">
+          <article *ngFor="let move of result.suggested_moves; index as index">
+            <span>{{ index + 1 }}</span>
+            <strong>{{ move.san }}</strong>
+            <small>{{ move.popularity | number }} parties</small>
+          </article>
+        </div>
+
+        <div class="block" *ngIf="result.context.length">
+          <p class="label">À retenir</p>
+          <article class="context" *ngFor="let item of result.context">
+            <a [href]="item.source_url" target="_blank" rel="noopener">{{ item.title }}</a>
+            <p>{{ item.text }}</p>
+          </article>
+        </div>
+
+        <div class="block" *ngIf="result.videos.length">
+          <p class="label">Pour aller plus loin</p>
+          <a class="video" *ngFor="let video of result.videos" [href]="video.url" target="_blank" rel="noopener">
+            <span>▶</span><div><strong>{{ video.title }}</strong><small>{{ video.channel }}</small></div>
+          </a>
+        </div>
+
+        <details *ngIf="result.warnings.length">
+          <summary>Informations techniques</summary>
+          <p *ngFor="let warning of result.warnings">{{ warning }}</p>
+        </details>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>POC étudiant · Les recommandations restent à valider avec un entraîneur qualifié.</footer>
