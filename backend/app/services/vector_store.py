@@ -10,7 +10,7 @@ from app.schemas import ContextResult, VectorSearchResponse
 
 
 class VectorStoreService:
-    """Recherche Milvus avec repli local pour une démonstration dégradée."""
+    """Recherche dans le corpus Wikichess, avec repli local pour la démo."""
 
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
@@ -76,9 +76,19 @@ class VectorStoreService:
         hits = client.search(
             collection_name=collection,
             data=[self._embedding(query)],
-            limit=limit,
+            # On récupère un peu plus de candidats afin de pouvoir corriger
+            # le classement sémantique avec la correspondance du titre.
+            limit=min(10, max(limit * 4, limit)),
             output_fields=["title", "text", "source_url"],
         )[0]
+        ranked = sorted(
+            hits,
+            key=lambda hit: (
+                self._title_match(query, hit["entity"]["title"]),
+                float(hit["distance"]),
+            ),
+            reverse=True,
+        )
         return [
             ContextResult(
                 title=hit["entity"]["title"],
@@ -86,7 +96,7 @@ class VectorStoreService:
                 source_url=hit["entity"]["source_url"],
                 score=round(float(hit["distance"]), 4),
             )
-            for hit in hits
+            for hit in ranked[:limit]
         ]
 
     def _load_data(self) -> list[dict[str, str]]:
@@ -96,13 +106,27 @@ class VectorStoreService:
     def _tokens(value: str) -> set[str]:
         return set(re.findall(r"[a-zà-ÿ]{3,}", value.casefold()))
 
+    @classmethod
+    def _title_match(cls, query: str, title: str) -> float:
+        """Score prioritaire pour les titres, utile face aux textes très courts."""
+        query_value = query.casefold().strip()
+        title_value = title.casefold()
+        query_tokens = cls._tokens(query_value)
+        title_tokens = cls._tokens(title_value)
+        overlap = len(query_tokens & title_tokens)
+        score = overlap / math.sqrt(max(1, len(query_tokens) * len(title_tokens)))
+        if query_value and query_value in title_value:
+            score += 2.0
+        return score
+
     def _search_local(self, query: str, limit: int) -> list[ContextResult]:
         query_tokens = self._tokens(query)
         scored: list[tuple[float, dict[str, str]]] = []
         for chunk in self._load_data():
-            tokens = self._tokens(f"{chunk['title']} {chunk['text']}")
-            overlap = len(query_tokens & tokens)
-            score = overlap / math.sqrt(max(1, len(query_tokens) * len(tokens)))
+            tokens = self._tokens(chunk["text"])
+            text_overlap = len(query_tokens & tokens)
+            text_score = text_overlap / math.sqrt(max(1, len(query_tokens) * len(tokens)))
+            score = text_score + 3.0 * self._title_match(query, chunk["title"])
             scored.append((score, chunk))
         scored.sort(key=lambda item: item[0], reverse=True)
         return [
