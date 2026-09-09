@@ -1,5 +1,6 @@
 from typing import Literal, TypedDict
 
+import chess
 from langgraph.graph import END, START, StateGraph
 
 from app.schemas import (
@@ -133,24 +134,32 @@ class OpeningAgentWorkflow:
     @staticmethod
     async def _format_answer(state: AgentState) -> dict:
         opening = state.get("opening")
+        board = chess.Board(state["fen"])
+        side = "les Blancs" if board.turn == chess.WHITE else "les Noirs"
+        side_verb = f"C'est aux {side[4:]} de jouer"
         if state["route"] == "theory":
             moves = ", ".join(move.san for move in state.get("suggested_moves", []))
             name = opening.name if opening and opening.name else "ouverture connue"
-            summary = f"Position théorique ({name}). Coups les plus joués : {moves}."
+            summary = (
+                f"Position théorique ({name}). {side_verb}. "
+                f"Coups les plus joués : {moves}."
+            )
         else:
             evaluation = state.get("evaluation")
             if evaluation and evaluation.mate_in is not None:
                 score = f"mat en {evaluation.mate_in}"
             elif evaluation and evaluation.centipawns is not None:
-                score = f"{evaluation.centipawns / 100:+.2f} pion(s) pour le camp au trait"
+                score = f"{evaluation.centipawns / 100:+.2f} pion(s) pour {side}"
             else:
                 score = "évaluation indisponible"
-            best = (
-                f", meilleur coup {evaluation.best_move}"
-                if evaluation and evaluation.best_move
-                else ""
-            )
-            summary = f"Position hors théorie : Stockfish indique {score}{best}."
+            best_san = ""
+            if evaluation and evaluation.best_move:
+                try:
+                    move = board.parse_uci(evaluation.best_move)
+                    best_san = f", meilleur coup {board.san(move)}"
+                except ValueError:
+                    best_san = f", meilleur coup {evaluation.best_move}"
+            summary = f"Position hors théorie : Stockfish indique {score}{best_san}."
         return {
             "summary": summary,
             "trace": [*state.get("trace", []), "format_answer"],

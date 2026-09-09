@@ -1,4 +1,4 @@
-"""Scrape les pages Wikichess pour constituer le corpus d'ouvertures."""
+"""Scrape récursif de Wikichess pour constituer le corpus d'ouvertures."""
 
 import asyncio
 import html as html_mod
@@ -11,25 +11,18 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import httpx
 
-PAGES: list[int] = [
-    # e4 lines
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    21, 22, 33,
-    109, 113, 114, 116, 118, 123, 124, 125, 133, 134,
-    502, 527, 789, 891, 894, 897,
-    6414, 6700, 6701, 6702,
-    # d4 lines
-    35, 36, 37, 38, 39, 40, 41, 42,
-    # More specific openings
-    13873, 9806, 10816, 17305, 20122, 24363, 25036,
-    32536, 38938, 43698, 50320, 53560, 56376,
-    73725, 101961, 106948, 122751, 128842, 133563,
-    205046, 232511, 267482,
-]
-
+SEED_URL = "https://ficgs.com/wikichess.html"
+BASE_URL = "https://ficgs.com/wikichess_{}.html"
+MAX_PAGES = 2000
 MIN_TEXT_LENGTH = 60
+CONCURRENCY = 5
+DELAY = 0.3
 
 OUTPUT = Path(__file__).resolve().parents[1] / "data" / "wikichess_openings.json"
+
+
+def _extract_linked_ids(html: str) -> set[int]:
+    return {int(m) for m in re.findall(r'wikichess_(\d+)\.html', html) if m != "0"}
 
 
 def extract_article(html: str, page_id: int) -> dict[str, str] | None:
@@ -46,7 +39,6 @@ def extract_article(html: str, page_id: int) -> dict[str, str] | None:
         title += f" — {variation_match.group(1)}"
     eco = eco_match.group(1) if eco_match else ""
 
-    # Extract descriptive text between date bracket and "====" separator
     desc_match = re.search(
         r'\[\d{4}\s+\w+\s+\d+\]\s*(.+?)={3,}',
         html,
@@ -55,14 +47,12 @@ def extract_article(html: str, page_id: int) -> dict[str, str] | None:
     desc_text = ""
     if desc_match:
         raw = desc_match.group(1).strip()
-        # Clean HTML artifacts
         raw = re.sub(r'<[^>]+>', '', raw)
         raw = html_mod.unescape(raw)
         raw = re.sub(r'\s+', ' ', raw).strip()
         if len(raw) > 10:
             desc_text = raw
 
-    # Extract move stats
     stat_lines: list[str] = []
     for m in re.finditer(
         r'(\w[\w\+\#]*)\s*:\s*(\d+)\s*games?,\s*White ELO av\s*:\s*(\d+)',
@@ -86,34 +76,59 @@ def extract_article(html: str, page_id: int) -> dict[str, str] | None:
     }
 
 
+async def _fetch(client: httpx.AsyncClient, url: str) -> str | None:
+    try:
+        resp = await client.get(url)
+        resp.raise_for_status()
+        return resp.content.decode("latin-1")
+    except httpx.HTTPError as exc:
+        print(f"  SKIP {url}: {exc}")
+        return None
+
+
 async def main() -> None:
+    visited: set[int] = set()
+    queue: list[int] = []
     results: list[dict[str, str]] = []
     seen_titles: set[str] = set()
+    sem = asyncio.Semaphore(CONCURRENCY)
+
     async with httpx.AsyncClient(timeout=15, follow_redirects=True) as client:
-        for page_id in PAGES:
-            url = f"https://ficgs.com/wikichess_{page_id}.html"
-            try:
-                resp = await client.get(url)
-                resp.raise_for_status()
-                # Wikichess serves Latin-1 despite sometimes declaring UTF-8
-                html = resp.content.decode("latin-1")
-            except httpx.HTTPError as exc:
-                print(f"  SKIP {url}: {exc}")
+        # Discover seed page IDs from the index
+        index_html = await _fetch(client, SEED_URL)
+        if index_html:
+            queue.extend(sorted(_extract_linked_ids(index_html)))
+
+        while queue and len(visited) < MAX_PAGES:
+            page_id = queue.pop(0)
+            if page_id in visited:
                 continue
+            visited.add(page_id)
+
+            async with sem:
+                html = await _fetch(client, BASE_URL.format(page_id))
+            if not html:
+                continue
+
+            # Discover linked sub-pages
+            for linked_id in _extract_linked_ids(html):
+                if linked_id not in visited:
+                    queue.append(linked_id)
 
             article = extract_article(html, page_id)
             if article and article["title"] not in seen_titles:
                 seen_titles.add(article["title"])
                 results.append(article)
-                print(f"  OK   {article['title']}")
+                print(f"  OK   [{len(results):>4}] {article['title']}")
             else:
                 reason = "doublon" if article else "pas de contenu exploitable"
-                print(f"  SKIP {url}: {reason}")
+                print(f"  SKIP wikichess_{page_id}: {reason}")
 
-            await asyncio.sleep(0.4)
+            await asyncio.sleep(DELAY)
 
+    results.sort(key=lambda a: a["title"])
     OUTPUT.write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"\n{len(results)} articles écrits dans {OUTPUT}")
+    print(f"\n{len(results)} articles écrits dans {OUTPUT}  (pages visitées : {len(visited)})")
 
 
 if __name__ == "__main__":
