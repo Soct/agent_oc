@@ -5,7 +5,7 @@ Ce dépôt contient un POC d'agent d'entraînement aux ouvertures d'échecs. L'u
 1. valide la position FEN ;
 2. consulte l'explorateur Lichess pour les coups théoriques ;
 3. bascule sur Stockfish si la position n'est plus dans la théorie ;
-4. ajoute du contexte issu d'un petit corpus Wikichess indexé dans Milvus ;
+4. ajoute du contexte issu du corpus Wikichess indexé dans Milvus ;
 5. propose des vidéos YouTube et met les résultats en cache dans MongoDB.
 
 Le workflow est orchestré avec LangGraph. Le POC reste utilisable sans clé YouTube et pendant le démarrage de Milvus grâce à des modes de démonstration explicitement signalés.
@@ -40,7 +40,7 @@ un lien de recherche de démonstration est retourné avec un avertissement visib
 
 ## Démonstration suggérée
 
-1. Avec `LICHESS_API_TOKEN`, ouvrir l'interface et analyser la position initiale : la branche `theory` doit proposer les coups Lichess.
+1. Avec `LICHESS_API_TOKEN`, ouvrir l'interface et analyser la position initiale : la branche `theory` doit proposer les coups et trois parties de référence Lichess.
 2. Jouer `e4`, `e5`, `Cf3`, `Cc6`, `Fb5` et analyser : le nom de l'ouverture espagnole et son contexte doivent apparaître.
 3. Charger une position hors ouverture, par exemple `8/8/8/8/8/4k3/8/4K3 w - - 0 1` : la branche `engine` doit afficher l'évaluation Stockfish.
 4. Couper Milvus pour montrer le repli local explicite, puis le redémarrer.
@@ -96,7 +96,7 @@ backend/
   app/api/          routes et injection de dépendances
   app/services/     Lichess, Stockfish, Milvus, MongoDB, YouTube
   app/workflows/    graphe LangGraph
-  data/             corpus pédagogique de 10 ouvertures
+  data/             corpus Wikichess + corpus curaté optionnel
   scripts/          chargement Milvus
   tests/            tests unitaires et API
 frontend/           application Angular et ngx-chess-board
