@@ -11,6 +11,16 @@ export interface TheoryMove {
   popularity: number;
 }
 
+export interface ReferenceGame {
+  id: string;
+  winner: 'white' | 'black' | null;
+  white: { name?: string; rating?: number };
+  black: { name?: string; rating?: number };
+  year: number | null;
+  month: string | null;
+  url: string;
+}
+
 export interface ContextResult {
   title: string;
   text: string;
@@ -32,6 +42,7 @@ export interface AgentResponse {
   summary: string;
   opening: { eco?: string; name?: string } | null;
   suggested_moves: TheoryMove[];
+  reference_games: ReferenceGame[];
   evaluation: {
     centipawns: number | null;
     mate_in: number | null;
@@ -52,4 +63,3 @@ export class ApiService {
     return this.http.post<AgentResponse>(`${this.baseUrl}/agent/analyze`, { fen });
   }
 }
-

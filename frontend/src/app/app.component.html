@@ -74,6 +74,14 @@
           </article>
         </div>
 
+        <div class="block" *ngIf="result.reference_games.length">
+          <p class="label">Parties de référence</p>
+          <a class="reference-game" *ngFor="let game of result.reference_games" [href]="game.url" target="_blank" rel="noopener">
+            <strong>{{ game.white.name || 'Blancs' }} – {{ game.black.name || 'Noirs' }}</strong>
+            <small>{{ game.year || 'Partie historique' }} · Voir sur Lichess ↗</small>
+          </a>
+        </div>
+
         <div class="block" *ngIf="result.context.length">
           <p class="label">À retenir</p>
           <article class="context" *ngFor="let item of result.context">
