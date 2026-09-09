@@ -1,7 +1,7 @@
 import httpx
 
 from app.core.config import Settings
-from app.schemas import MovesResponse, OpeningInfo, TheoryMove
+from app.schemas import MovesResponse, OpeningInfo, ReferenceGame, ReferencePlayer, TheoryMove
 
 
 class LichessUnavailable(RuntimeError):
@@ -23,7 +23,7 @@ class LichessService:
             ) as client:
                 response = await client.get(
                     url,
-                    params={"fen": fen, "moves": 8, "topGames": 0},
+                    params={"fen": fen, "moves": 8, "topGames": 3},
                     headers=headers,
                 )
                 response.raise_for_status()
@@ -49,4 +49,28 @@ class LichessService:
             )
         opening_data = payload.get("opening")
         opening = OpeningInfo(**opening_data) if opening_data else None
-        return MovesResponse(fen=fen, opening=opening, moves=moves)
+        games = []
+        top_games = payload.get("topGames", [])
+        # Selon la variante de l'explorateur, une partie peut être renvoyée
+        # dans topGames ou attachée au coup correspondant.
+        if not top_games:
+            top_games = [item["game"] for item in payload.get("moves", []) if item.get("game")]
+        for item in top_games:
+            game = item.get("game", item)
+            game_id = game.get("id")
+            if not game_id:
+                continue
+            games.append(
+                ReferenceGame(
+                    id=game_id,
+                    winner=game.get("winner"),
+                    white=ReferencePlayer(**(game.get("white") or {})),
+                    black=ReferencePlayer(**(game.get("black") or {})),
+                    year=game.get("year"),
+                    month=game.get("month"),
+                    url=f"https://lichess.org/{game_id}",
+                )
+            )
+        return MovesResponse(
+            fen=fen, opening=opening, moves=moves, reference_games=games[:3]
+        )

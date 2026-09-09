@@ -18,11 +18,27 @@ class TheoryMove(BaseModel):
     popularity: int = 0
 
 
+class ReferencePlayer(BaseModel):
+    name: str | None = None
+    rating: int | None = None
+
+
+class ReferenceGame(BaseModel):
+    id: str
+    winner: Literal["white", "black"] | None = None
+    white: ReferencePlayer = Field(default_factory=ReferencePlayer)
+    black: ReferencePlayer = Field(default_factory=ReferencePlayer)
+    year: int | None = None
+    month: str | None = None
+    url: str
+
+
 class MovesResponse(BaseModel):
     fen: str
     source: Literal["lichess"] = "lichess"
     opening: OpeningInfo | None = None
     moves: list[TheoryMove]
+    reference_games: list[ReferenceGame] = Field(default_factory=list)
 
 
 class EvaluationResponse(BaseModel):
@@ -78,6 +94,7 @@ class AgentResponse(BaseModel):
     summary: str
     opening: OpeningInfo | None = None
     suggested_moves: list[TheoryMove] = Field(default_factory=list)
+    reference_games: list[ReferenceGame] = Field(default_factory=list)
     evaluation: EvaluationResponse | None = None
     context: list[ContextResult] = Field(default_factory=list)
     videos: list[VideoResult] = Field(default_factory=list)
