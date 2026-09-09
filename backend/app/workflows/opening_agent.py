@@ -8,6 +8,7 @@ from app.schemas import (
     ContextResult,
     EvaluationResponse,
     OpeningInfo,
+    ReferenceGame,
     TheoryMove,
     VideoResult,
 )
@@ -22,6 +23,7 @@ class AgentState(TypedDict, total=False):
     route: Literal["theory", "engine"]
     opening: OpeningInfo | None
     suggested_moves: list[TheoryMove]
+    reference_games: list[ReferenceGame]
     evaluation: EvaluationResponse | None
     context: list[ContextResult]
     videos: list[VideoResult]
@@ -76,6 +78,7 @@ class OpeningAgentWorkflow:
                 "route": "engine",
                 "opening": None,
                 "suggested_moves": [],
+                "reference_games": [],
                 "warnings": warnings,
                 "trace": trace,
             }
@@ -84,6 +87,7 @@ class OpeningAgentWorkflow:
             "route": route,
             "opening": theory.opening,
             "suggested_moves": theory.moves[:3],
+            "reference_games": theory.reference_games,
             "warnings": warnings,
             "trace": trace,
         }
